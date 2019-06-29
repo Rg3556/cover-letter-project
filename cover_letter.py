@@ -18,12 +18,15 @@ def user_get_token():
     #
     CLIENT_ID = os.environ.get("LINKEDIN_CLIENT_ID", "OOPS")
     CLIENT_SECRET = os.environ.get("LINKEDIN_CLIENT_SECRET", "OOPS")
-    REDIRECT_URL = os.environ.get("LINKEDIN_REDIRECT_URL", "http://localhost:8000")
-    #print(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
+    REDIRECT_URL = os.environ.get("LINKEDIN_REDIRECT_URL", "https://www.linkedin.com/jobs/view/intern-un-academic-impact-at-united-nations-1109540495/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic")
+    # print(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
+
+    
 
     auth = linkedin.LinkedInAuthentication(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, PERMISSIONS)
     #print(type(auth)) #> <class 'linkedin_v2.linkedin.LinkedInAuthentication'>
-    #print(auth.authorization_url)
+    # print(auth.authorization_url)
+    
 
     webbrowser.open_new(auth.authorization_url)
     # login, grant permissions, then you'll be redirected to a localhost url.
