@@ -18,24 +18,24 @@ def user_get_token():
     #
     CLIENT_ID = os.environ.get("LINKEDIN_CLIENT_ID", "OOPS")
     CLIENT_SECRET = os.environ.get("LINKEDIN_CLIENT_SECRET", "OOPS")
-    REDIRECT_URL = os.environ.get("LINKEDIN_REDIRECT_URL", "https://www.linkedin.com/jobs/view/intern-un-academic-impact-at-united-nations-1109540495/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic")
+    REDIRECT_URL = os.environ.get("LINKEDIN_REDIRECT_URL", "http://localhost:8080/code")
     # print(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
 
     
 
     auth = linkedin.LinkedInAuthentication(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, PERMISSIONS)
     #print(type(auth)) #> <class 'linkedin_v2.linkedin.LinkedInAuthentication'>
-    # print(auth.authorization_url)
+    #print(auth.authorization_url)
     
 
     webbrowser.open_new(auth.authorization_url)
     # login, grant permissions, then you'll be redirected to a localhost url.
-    # ... observe the "code" parameter, and enter it below
+    # ... observe the "code" parameter, and enter it belows
     # ... making sure to remove the "state" parameter part of the url, which might come at the end
     auth_code = input("The auth code was:")
 
-    auth.authorization_code = auth_code
-
+    auth.authorization_code = auth_code 
+    # auth.authorization_code = os.environ.get("authorization_code", "OOPS")
     #
     # GET AN ACCESS TOKEN
     #
@@ -44,8 +44,16 @@ def user_get_token():
 
     return access_token
 
-if __name__ == "__main__":
 
+# application = linkedin.LinkedInApplication(token=user_get_token)
+# 
+# application = server.quick_api(CLIENT_ID, CLIENT_SECRET)
+
+# job = application.get_job(job_id=1109540495)
+# print(job)
+
+if __name__ == "__main__":
+    
     print("----------------")
     print("GETTING TOKEN...")
     if LINKEDIN_ACCESS_TOKEN:
@@ -64,6 +72,11 @@ if __name__ == "__main__":
     profile = client.get_profile()
     pprint(profile)
 
+
+    print("GETTING JOB...")
+    job = client.get_job(job_id=1109540495)
+    pprint(job)
+
     #>{
     #>    'firstName': {
     #>        'localized': {'en_US': 'Polly'},
@@ -79,3 +92,5 @@ if __name__ == "__main__":
     #>    'numConnections': 0,
     #>    'profilePicture': {'displayImage': 'urn:li:digitalmediaAsset:456plk'}
     #>}
+
+    ##### All above attributed from  https://github.com/ozgur/python-linkedin
