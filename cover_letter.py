@@ -1,4 +1,6 @@
 import os
+import json
+import requests
 from pprint import pprint
 from dotenv import load_dotenv
 from linkedin_v2 import linkedin
