@@ -6,7 +6,8 @@
 - Anaconda 3.7    
 - Python 3.7
 - Pip
-- Chromedriver (download chromedriver from http://chromedriver.chromium.org/downloads)
+- Chromedriver 
+
 
 
 ## Setup ##
@@ -27,7 +28,11 @@ Then use your command line application (Mac Terminal or Windows Git Bash) to nav
 
 Open the repo with your text editor (VS Code), and follow the instruction of the repo's "README.md" file to do the following setup.
 
+### Chromedriver  Setup
 
+Download chromedriver from http://chromedriver.chromium.org/downloads and replace the path (E:\Python scripts\chromedriver) with where you download it in the job.py.
+  
+    driver = webdriver.Chrome('E:\Python scripts\chromedriver')
 
 ### Environment Setup
 

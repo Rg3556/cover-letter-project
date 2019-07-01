@@ -17,5 +17,5 @@ print(driver.find_element_by_css_selector("div.description__text--rich").text)
 
 
 
-parsed_response = json.loads(response.text)
-print(parsed_response.keys())
+# parsed_response = json.loads(response.text)
+# print(parsed_response.keys())

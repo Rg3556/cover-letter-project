@@ -7,6 +7,9 @@ from docx.shared import Pt
 user_name = "Ruolin Gou"
 user_status = "Master's student"
 user_major = "Social and Consumer Psychology Program"
+user_address = "10 River rd, Apt 4N, New York, NY, 10044"
+user_phone = "646-243-0136"
+user_email = "rg@3556@nyu.edu"
 
 ## STARTING
 # March, 30th, 2019
@@ -66,7 +69,7 @@ print(end)
 doc = docx.Document()
 # header = doc.add_heading(user_name, 0) 
 header = doc.add_heading(user_name, 3)
-header_contact = doc.add_heading("10 River rd, Apt 4N, New York, NY, 10044 | 646-243-0136 | rg@3556@nyu.edu", 8)
+header_contact = doc.add_heading(f"{user_address} | {user_phone} | {user_phone}", 8)
 header.alignment = WD_ALIGN_PARAGRAPH.CENTER
 header_contact.alignment = WD_ALIGN_PARAGRAPH.CENTER
 # header_style = doc.styles['Normal']
