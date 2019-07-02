@@ -48,7 +48,7 @@ From within the virtual environment, install Python package dependencies:
     pip install selenium
     pip install python-docx 
     # pip install requests
-    # pip install python-dotenv
+    pip install python-dotenv
     # pip install pandas
     # pip install -r requirements.txt #> (loads contents of the .env file into the script's environment, and for Mail # and SMS messages)
     pip install pytest # (only if you'll be writing tests)
