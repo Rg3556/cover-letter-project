@@ -1,6 +1,7 @@
 import os
 import datetime
 import docx
+import re
 import pytest
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
@@ -31,34 +32,24 @@ print("Welcome to Cover Letter Premium!")
 print("------------------------------")
 job_url = input("please input your URL: ")
 
-### Validation
 
-# from urlparse import urlparse
-# urlparse('http://----')
-# import urllib
-# try:
-#     urllib.urlopen(url)
-# except IOError:
-#
-# 
-# from urllib.request import urlopen, URLErrord
-#def validate_web_url(url="http://"):
-#    try:
-#        urlopen(url)
-#        return True
-#
-#from django.core.validators import URLValidator
-#from django.core.exceptions import ValidationError
-#
-#val = URLValidator(verify_exists=False)
-#try:
-#    val('http://')
-#except ValidationError:
-#    print("-------------------------")
-#    print("Sorry, couldn't find any trading data for that stock symbol. Please try again with a properly-formed url.")
-#    print("-------------------------")
-#    print('Shutting the program down...')
-#    exit()
+
+### Validation URL (attributed from https://stackoverflow.com/questions/827557/how-do-you-validate-a-url-with-a-regular-expression-in-python)
+
+def validate_url(url):
+    regex = re.compile(
+        r'^(?:http|ftp)s?://' # http:// or https://
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+        r'localhost|' #localhost...
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+        r'(?::\d+)?' # optional port
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+    return re.match(regex, url) is not None
+
+while not validate_url(job_url):
+    job_url = input("Please input a valid URL: ")
+
+
 
 print("------------------------------")
 print("Getting the job information...")
@@ -68,7 +59,7 @@ print("------------------------------")
 
 
 driver.get(job_url)
-#driver.get('https://www.linkedin.com/jobs/view/1304372932/'
+#driver.get('https://www.linkedin.com/jobs/view/1304372932/')
 
 
 job_info =  driver.find_element_by_tag_name('title').get_attribute('text')
@@ -90,17 +81,7 @@ job_dict = {
 # print(job_dict)
 
 
-#try:
-#    last_refreshed = job_dict["Meta Data"]['3. Last Refreshed']
-#    parsed_response['Time Series (Daily)']
-#except:
-#    print("-------------------------")
-#    print("Sorry, couldn't find any trading data for that stock symbol. Please try again with a properly-formed stock symbol, like 'MSFT'...")
-#    print("-------------------------")
-#    print('Shutting the program down...')
-#    exit()
-
-### user profile
+### USER  Profile
 user_name = os.environ.get("USER_name")
 user_status = os.environ.get("USER_status")
 user_major = os.environ.get("USER_major")
@@ -113,7 +94,7 @@ user_graduate = os.environ.get("USER_graduate")
 
 
 ### STARTING
-# March, 30th, 2019
+# March, 30, 2019
 today = datetime.date.today()
 F_today = today.strftime("%B, %d, %Y")
 # print(F_today)
@@ -123,7 +104,6 @@ company_name =  job_dict["company"]
 company_address = job_dict["address"]
 # print(company_name)
 
-
 start = f""" 
 {F_today}
 
@@ -131,7 +111,6 @@ start = f"""
 {company_address}
 """
 print(start)
-
 
 
 ### BOBY CONTENTS
@@ -164,11 +143,11 @@ print("")
 ###  Conditional selection of key words from the job description ###
 job_description = job_dict["description"]
 
-
 skill = []
 
 skill_body = str()
 research_experience =str()
+
 ## Analytical/Resarch Paragraph
 if "analytical" in job_description:
     skill.append(skill_1)  
@@ -198,76 +177,129 @@ else:
 
 ## Skill Paragraph
 # Communication-related skills
-if "communication" in job_description:
-    skill_body = communication 
-    skill.append(skill_2) 
-elif "verbal" in job_description:
-    skill_body = communication 
-    skill.append(skill_2) 
-elif "people" in job_description:
-    skill_body = communication 
-    skill.append(skill_2) 
-else:
-    skill_body = skill_body
-    skill = skill
+
+# if "communication" in job_description:
+#     skill_body = communication 
+#     skill.append(skill_2) 
+# elif "verbal" in job_description:
+#     skill_body = communication 
+#     skill.append(skill_2) 
+# elif "people" in job_description:
+#     skill_body = communication 
+#     skill.append(skill_2) 
+# else:
+#     skill_body = skill_body
+#     skill = skill
+
+if __name__ == "__main__":
+        
+    def add_communication(skill):
+        skill.append(skill_2)
+
+    if "communication" in job_description or "verbal" in job_description or "people" in job_description:
+        add_communication(skill)
+        skill_body = communication
+    else:
+        skill_body = skill_body
+        skill = skill
+
 
 # Leadership or global perspective
-if "global"  in job_description:
-    skill_body = (skill_body + global_leadership)
-    skill.append(skill_3) 
-elif "leadership" in job_description:
+
+# if "global"  in job_description:
+#     skill_body = (skill_body + global_leadership)
+#     skill.append(skill_3) 
+# elif "leadership" in job_description:
+#     skill_body = skill_body + global_leadership
+#     skill.append(skill_3)  
+# else:
+#     skill_body = skill_body
+#     skill = skill
+
+def add_leadership_global(skill):
+    skill.append(skill_3)
+
+if "global"  in job_description or "leadership" in job_description:
+    add_leadership_global(skill)
     skill_body = skill_body + global_leadership
-    skill.append(skill_3)  
 else:
     skill_body = skill_body
     skill = skill
 
+
 # Basic software skills
-if "software" in job_description:
-    skill_body = skill_body + software
-    skill.append(skill_4) 
-elif "Microsoft Office" in job_description:
-    skill_body = skill_body + software
+
+# if "software" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4) 
+# elif "Microsoft Office" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# elif "Excel" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# elif "PowerPoint" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# elif "Word" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# elif "SPSS" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# elif "R" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# elif "programming" in job_description:
+#     skill_body = skill_body + software
+#     skill.append(skill_4)
+# else:
+#     skill_body = skill_body
+#     skill = skill
+
+def add_software(skill):
     skill.append(skill_4)
-elif "Excel" in job_description:
+
+if "software" in job_description or "Microsoft Office" in job_description or "Excel" in job_description or "PowerPoint" in job_description or "Word" in job_description or "SPSS" in job_description or "R" in job_description or "programming" in job_description:
+    add_software(skill)
     skill_body = skill_body + software
-    skill.append(skill_4)
-elif "PowerPoint" in job_description:
-    skill_body = skill_body + software
-    skill.append(skill_4)
-elif "Word" in job_description:
-    skill_body = skill_body + software
-    skill.append(skill_4)
-elif "SPSS" in job_description:
-    skill_body = skill_body + software
-    skill.append(skill_4)
-elif "R" in job_description:
-    skill_body = skill_body + software
-    skill.append(skill_4)
-elif "programming" in job_description:
-    skill_body = skill_body + software
-    skill.append(skill_4)
 else:
     skill_body = skill_body
     skill = skill
 
 
 # Time management skill
-if "multitask"in job_description:
-    skill_body = skill_body + multitasking
+
+# if "multitask"in job_description:
+#     skill_body = skill_body + multitasking
+#     skill.append(skill_5)
+# elif "organizational" in job_description:
+#     skill_body = skill_body + multitasking
+#     skill.append(skill_5)
+# elif "time-management" in job_description:
+#     skill_body = skill_body + multitasking
+#     skill.append(skill_5)
+# elif "time management" in job_description:
+#     skill_body = skill_body + multitasking
+#     skill.append(skill_5)
+# else:
+#     skill_body = skill_body
+#     skill = skill
+
+def add_time_management(skill):
     skill.append(skill_5)
-elif "organizational" in job_description:
+
+if "multitask" in job_description or "organize" in job_description or "organizational" in job_description or "time-management" in job_description or "time management" in job_description:
+    add_time_management(skill)
     skill_body = skill_body + multitasking
-    skill.append(skill_5)
-elif "time-management" in job_description:
-    skill_body = skill_body + multitasking
-    skill.append(skill_5)
-elif "time management" in job_description:
-    skill_body = skill_body + multitasking
-    skill.append(skill_5)
 else:
     skill_body = skill_body
     skill = skill
+
+# print(skill)
+# print(skill_body)
+# breakpoint()
+
 
 # Adding a comma butween each item (Attributed from: https://stackoverflow.com/questions/5920643/add-an-item-between-each-item-already-in-the-list)
 sep = [', '] * len(skill)
@@ -285,18 +317,13 @@ skill_s = ''.join(skill_c)
 # breakpoint()
 
 ending_body = f"I feel strongly that my {skill_s} skills, {research_experience} and consumer psychology background will make me an excellent fit for the role of{job_title}. My global cultural perspective can also contribute to this position. I would welcome the opportunity to discuss the position in further interview. Thank you for your time and consideration."
-
-# print(skill_body)
-# 
-
-
-# if "market" or "marketing" in job_requirments
-#     
-#     
+   
 print(skill_body)
 
 print("")
 print(ending_body)
+
+
 ## ENDING
 end = f"""
 Sincerely,
