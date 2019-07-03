@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-### Data collecting without API (Attributed from )
+### Data collecting from LinkedIn job page (Attributed from )
 
 # download chromedriver from http://chromedriver.chromium.org/downloads
 # and replace the path with where you download it
@@ -30,6 +30,35 @@ driver = webdriver.Chrome('E:\Python scripts\chromedriver', chrome_options=optio
 print("Welcome to Cover Letter Premium!")
 print("------------------------------")
 job_url = input("please input your URL: ")
+
+### Validation
+
+# from urlparse import urlparse
+# urlparse('http://----')
+# import urllib
+# try:
+#     urllib.urlopen(url)
+# except IOError:
+#
+# 
+# from urllib.request import urlopen, URLErrord
+#def validate_web_url(url="http://"):
+#    try:
+#        urlopen(url)
+#        return True
+#
+#from django.core.validators import URLValidator
+#from django.core.exceptions import ValidationError
+#
+#val = URLValidator(verify_exists=False)
+#try:
+#    val('http://')
+#except ValidationError:
+#    print("-------------------------")
+#    print("Sorry, couldn't find any trading data for that stock symbol. Please try again with a properly-formed url.")
+#    print("-------------------------")
+#    print('Shutting the program down...')
+#    exit()
 
 print("------------------------------")
 print("Getting the job information...")
@@ -60,6 +89,16 @@ job_dict = {
 # driver.quit()
 # print(job_dict)
 
+
+#try:
+#    last_refreshed = job_dict["Meta Data"]['3. Last Refreshed']
+#    parsed_response['Time Series (Daily)']
+#except:
+#    print("-------------------------")
+#    print("Sorry, couldn't find any trading data for that stock symbol. Please try again with a properly-formed stock symbol, like 'MSFT'...")
+#    print("-------------------------")
+#    print('Shutting the program down...')
+#    exit()
 
 ### user profile
 user_name = os.environ.get("USER_name")
