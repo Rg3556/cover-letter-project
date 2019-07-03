@@ -69,6 +69,7 @@ user_address = os.environ.get("USER_address")
 user_phone = os.environ.get("USER_phone")
 user_email = os.environ.get("USER_email")
 user_school = os.environ.get("USER_school")
+user_graduate = os.environ.get("USER_graduate")
 # print(user_major)
 
 
@@ -104,7 +105,7 @@ skill_3 = "leadership"
 skill_4 = "programming"
 skill_5 = "time-management"
 research = "past research experience,"
-intro_p = f"I want to express my immense interest in the opportunity of the{job_title} at {company_name}. I am a {user_status.lower()} in the {user_major} at {user_school} graduating in 2020. For this{job_title} position, I am excited to apply my market research and consumer behavior knowledge to real-world situations and learn valuable experience from industry professionals. I believe that my qualifications and educational pursuits are a great fit with the kind of candidate you company is looking for. Given my passion and knowledge, I would be able to contribute to this role immediately."
+intro_p = f"I want to express my immense interest in the opportunity of the{job_title} at {company_name}. I am a {user_status.lower()} in the {user_major} at {user_school} graduating in {user_graduate}. For this{job_title} position, I am excited to apply my market research and consumer behavior knowledge to real-world situations and learn valuable experience from industry professionals. I believe that my qualifications and educational pursuits are a great fit with the kind of candidate you company is looking for. Given my passion and knowledge, I would be able to contribute to this role immediately."
 analytical_research = "I know this position requires strong analytical and research ability, and my previous research experiences strongly supported my competence. I worked as a research assistant in two psychology labs at Willamette University for three years and actively engaged in both experimental design and data analysis processes. The complicated experimental design procedure improved my skills of thorough design and organization and attention to details. The data analysis processes, including data coding, cleaning, analysis, visualization, and interpretation, gave me great opportunities to apply my statistical knowledge and strengthen my analytical skills. From my current master program, I have learned market research methods and design thinking, using interviews, focus groups, and other qualitative methods to achieve human-centered designs. I am trained to apply psychological theories to the marketing industry and be familiar with qualitative research and analysis as well."
 
 communication = "My communication skills gained good practice during my research experience. During the data collection, I have to understand the purpose of my supervisors and transmit correct information to experiment participants to gain expected and unbiased results. This training enhanced both my communication clarity and confidence."
@@ -294,3 +295,9 @@ font = style.font
 font.name = 'Times New Roman'
 font.size = Pt(10)
 doc.save(f'{company_name}-cover letter.docx')
+
+
+## Tests
+
+if __name__ == "__main__":
+    pass
