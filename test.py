@@ -1,7 +1,7 @@
 ## Tests for key words filter logic
 
-def add_communication():
-    skill = []
-    add_communication(skill)
-    assert(skill_2 in skill)
+from template import add_communication
+
+def test_add_communication():
+    assert add_communication ("communication") == skill_2
     

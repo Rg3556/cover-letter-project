@@ -57,6 +57,10 @@ From within the virtual environment, demonstrate your ability to run the Python 
 
     python template.py
 
+The system will ask you for a valid URL input. Please choose a random market-research related job or internship on LinkedIn, and copy and paste the job URL.
+
+Then, you will get a cover letter created based on different key words filtered from the job description showing on the command-line screen. You will also automatically get a Microsoft version of this cover letter with additional header inside the cover letter, which named by the company's name.  
+
 ## Automated tests 
 
 From within the virtual environment, run the Python script from the command-line:

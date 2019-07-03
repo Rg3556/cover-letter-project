@@ -10,14 +10,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-### Data collecting from LinkedIn job page (Attributed from )
+### Data collecting from LinkedIn job page (Attributed from git username: lic9)
 
 # download chromedriver from http://chromedriver.chromium.org/downloads
 # and replace the path with where you download it
 
 
 
-## MAKE SURE TO SET ENGLISH AS THE LANGUAGE (attributed from Prof. Rossetti, s2t2)
+## MAKE SURE TO SET ENGLISH AS THE LANGUAGE (attributed from Prof. Rossetti, git username: s2t2)
 # source: https://sqa.stackexchange.com/questions/9904/how-to-set-browser-locale-with-chromedriver-python#
 options = webdriver.ChromeOptions()
 #options.add_experimental_option("prefs", {"intl.accept_languages": "es"}) # THIS WORKS - GETS SPANISH
@@ -27,11 +27,11 @@ options.add_experimental_option("prefs", {"intl.accept_languages": "en,en_US"})
 # and replace the path with where you download it
 driver = webdriver.Chrome('E:\Python scripts\chromedriver', chrome_options=options)
 
-
+print("------------------------------")
 print("Welcome to Cover Letter Premium!")
 print("------------------------------")
 job_url = input("please input your URL: ")
-
+# Please put in a market reserach related job or intern.
 
 
 ### Validation URL (attributed from https://stackoverflow.com/questions/827557/how-do-you-validate-a-url-with-a-regular-expression-in-python)
@@ -47,7 +47,14 @@ def validate_url(url):
     return re.match(regex, url) is not None
 
 while not validate_url(job_url):
-    job_url = input("Please input a valid URL: ")
+    ## directly shut down the system
+    print("------------------------------")
+    print("Oh, expecting a valid URL. Please try again...")
+    print("------------------------------")
+    print('Shutting the program down...')
+    exit()
+    ## OR ask for input until the input is valid
+    # job_url = input("Please input a valid URL: ")
 
 
 
@@ -149,31 +156,39 @@ skill_body = str()
 research_experience =str()
 
 ## Analytical/Resarch Paragraph
-if "analytical" in job_description:
-    skill.append(skill_1)  
-    research_experience = research
-    print(analytical_research)
-    print("")
-elif "research" in job_description:
-    skill.append(skill_1)  
-    research_experience = research
-    print(analytical_research)
-    print("")
-elif "quantitative" in job_description:
+
+# if "analytical" in job_description:
+#     skill.append(skill_1)  
+#     research_experience = research
+#     print(analytical_research)
+#     print("")
+# elif "research" in job_description:
+#     skill.append(skill_1)  
+#     research_experience = research
+#     print(analytical_research)
+#     print("")
+# elif "quantitative" in job_description:
+#     skill.append(skill_1) 
+#     research_experience = research
+#     print(analytical_research)
+#     print("")
+# elif "market research" in job_description:
+#     skill = skill.append(skill_1) 
+#     research_experience = research
+#     print(analytical_research)
+#     print("")
+# else:
+#     skill = skill
+#     research_experience = research_experience
+
+if  "analytical" in job_description or "research" in job_description or "quantitative" in job_description or "market research" in job_description:
     skill.append(skill_1) 
     research_experience = research
     print(analytical_research)
     print("")
-elif "market research" in job_description:
-    skill = skill.append(skill_1) 
-    research_experience = research
-    print(analytical_research)
-    print("")
 else:
+    skill_body = skill_body
     skill = skill
-    research_experience = research_experience
-
-
 
 ## Skill Paragraph
 # Communication-related skills
@@ -194,15 +209,13 @@ else:
 if __name__ == "__main__":
         
     def add_communication(skill):
-        skill.append(skill_2)
-
+        skill.append(skill_2)   
     if "communication" in job_description or "verbal" in job_description or "people" in job_description:
         add_communication(skill)
         skill_body = communication
     else:
         skill_body = skill_body
-        skill = skill
-
+        skill = skill   
 
 # Leadership or global perspective
 
@@ -363,7 +376,3 @@ font.size = Pt(10)
 doc.save(f'{company_name}-cover letter.docx')
 
 
-## Tests
-
-if __name__ == "__main__":
-    pass
