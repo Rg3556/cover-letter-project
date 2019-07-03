@@ -47,16 +47,18 @@ From within the virtual environment, install Python package dependencies:
     
     pip install selenium
     pip install python-docx 
-    # pip install requests
     pip install python-dotenv
-    # pip install pandas
-    # pip install -r requirements.txt #> (loads contents of the .env file into the script's environment, and for Mail # and SMS messages)
-    pip install pytest # (only if you'll be writing tests)
+    pip install pytest # (only if you'll be running tests)
     
 
 ## Usage ##
 
 From within the virtual environment, demonstrate your ability to run the Python script from the command-line:
 
-    python job.py
+    python template.py
 
+## Automated tests 
+
+From within the virtual environment, run the Python script from the command-line:
+
+    python test.py

@@ -1,6 +1,7 @@
 import os
 import datetime
 import docx
+import pytest
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
 from selenium import webdriver
@@ -29,6 +30,12 @@ driver = webdriver.Chrome('E:\Python scripts\chromedriver', chrome_options=optio
 print("Welcome to Cover Letter Premium!")
 print("------------------------------")
 job_url = input("please input your URL: ")
+
+print("------------------------------")
+print("Getting the job information...")
+print("------------------------------")
+print("Based on the key words in the job description, here is your cover letter:")
+print("------------------------------")
 
 
 driver.get(job_url)
