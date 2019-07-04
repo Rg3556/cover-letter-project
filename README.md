@@ -62,6 +62,8 @@ Then, you will get a cover letter created based on different key words filtered 
 
 ## Automated tests 
 
-From within the virtual environment, run the automated tests of "python test_letter.py" from the command-line by input:
+From within the virtual environment, run the automated tests in "python test_letter.py" from the command-line by input:
 
     pytest
+
+Although the pytest is not testing the "cover_letter.py", but the codes in "letter.py" and "cover_letter.py" are the same. Putting the code in a different ".py" is to avoid the messy format of output when including the tests.

@@ -20,6 +20,18 @@ def add_communication(skill, skill_2):
     skill.append(skill_2) 
     return skill
  
+def add_leadership_global(skill, skill_3):
+    skill.append(skill_3)
+    return skill
+
+def add_software(skill, skill_4):
+    skill.append(skill_4)
+    return skill
+
+def add_time_management(skill, skill_5):
+    skill.append(skill_5)
+    return skill
+
 if __name__ == "__main__":
 
 
@@ -161,30 +173,6 @@ if __name__ == "__main__":
 
     ## Analytical/Resarch Paragraph
 
-    # if "analytical" in job_description:
-    #     skill.append(skill_1)  
-    #     research_experience = research
-    #     print(analytical_research)
-    #     print("")
-    # elif "research" in job_description:
-    #     skill.append(skill_1)  
-    #     research_experience = research
-    #     print(analytical_research)
-    #     print("")
-    # elif "quantitative" in job_description:
-    #     skill.append(skill_1) 
-    #     research_experience = research
-    #     print(analytical_research)
-    #     print("")
-    # elif "market research" in job_description:
-    #     skill = skill.append(skill_1) 
-    #     research_experience = research
-    #     print(analytical_research)
-    #     print("")
-    # else:
-    #     skill = skill
-    #     research_experience = research_experience
-
     if  "analytical" in job_description or "research" in job_description or "quantitative" in job_description or "market research" in job_description:
         skill.append(skill_1) 
         research_experience = research
@@ -196,19 +184,6 @@ if __name__ == "__main__":
 
     ## Skill Paragraph
     # Communication-related skills
-
-    # if "communication" in job_description:
-    #     skill_body = communication 
-    #     skill.append(skill_2) 
-    # elif "verbal" in job_description:
-    #     skill_body = communication 
-    #     skill.append(skill_2) 
-    # elif "people" in job_description:
-    #     skill_body = communication 
-    #     skill.append(skill_2) 
-    # else:
-    #     skill_body = skill_body
-    #     skill = skill
     
     if "communication" in job_description or "verbal" in job_description or "people" in job_description:
         # skill 
@@ -221,19 +196,8 @@ if __name__ == "__main__":
 
     # Leadership or global perspective
 
-    # if "global"  in job_description:
-    #     skill_body = (skill_body + global_leadership)
-    #     skill.append(skill_3) 
-    # elif "leadership" in job_description:
-    #     skill_body = skill_body + global_leadership
-    #     skill.append(skill_3)  
-    # else:
-    #     skill_body = skill_body
-    #     skill = skill
-    def add_leadership_global(skill):
-        skill.append(skill_3)
     if "global"  in job_description or "leadership" in job_description:
-        add_leadership_global(skill)
+        add_leadership_global(skill, skill_3)
         skill_body = skill_body + global_leadership
     else:
         skill_body = skill_body
@@ -242,39 +206,8 @@ if __name__ == "__main__":
 
     # Basic software skills
 
-    # if "software" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4) 
-    # elif "Microsoft Office" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # elif "Excel" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # elif "PowerPoint" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # elif "Word" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # elif "SPSS" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # elif "R" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # elif "programming" in job_description:
-    #     skill_body = skill_body + software
-    #     skill.append(skill_4)
-    # else:
-    #     skill_body = skill_body
-    #     skill = skill
-
-    def add_software(skill):
-        skill.append(skill_4)
-
     if "software" in job_description or "Microsoft Office" in job_description or "Excel" in job_description or "PowerPoint" in job_description or "Word" in job_description or "SPSS" in job_description or "R" in job_description or "programming" in job_description:
-        add_software(skill)
+        add_software(skill, skill_5)
         skill_body = skill_body + software
     else:
         skill_body = skill_body
@@ -283,27 +216,8 @@ if __name__ == "__main__":
 
     # Time management skill
 
-    # if "multitask"in job_description:
-    #     skill_body = skill_body + multitasking
-    #     skill.append(skill_5)
-    # elif "organizational" in job_description:
-    #     skill_body = skill_body + multitasking
-    #     skill.append(skill_5)
-    # elif "time-management" in job_description:
-    #     skill_body = skill_body + multitasking
-    #     skill.append(skill_5)
-    # elif "time management" in job_description:
-    #     skill_body = skill_body + multitasking
-    #     skill.append(skill_5)
-    # else:
-    #     skill_body = skill_body
-    #     skill = skill
-
-    def add_time_management(skill):
-        skill.append(skill_5)
-
     if "multitask" in job_description or "organize" in job_description or "organizational" in job_description or "time-management" in job_description or "time management" in job_description:
-        add_time_management(skill)
+        add_time_management(skill, skill_5)
         skill_body = skill_body + multitasking
     else:
         skill_body = skill_body
