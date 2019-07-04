@@ -37,7 +37,6 @@ Download chromedriver from http://chromedriver.chromium.org/downloads and replac
 ### Environment Setup
 
 Create and activate a new Anaconda virtual environment:
-
     
     conda create -n letter-env python=3.7 # (first time only)
     conda activate letter-env
@@ -55,7 +54,7 @@ From within the virtual environment, install Python package dependencies:
 
 From within the virtual environment, demonstrate your ability to run the Python script from the command-line:
 
-    python template.py
+    python cover_letter.py
 
 The system will ask you for a valid URL input. Please choose a random market-research related job or internship on LinkedIn, and copy and paste the job URL.
 
@@ -63,6 +62,6 @@ Then, you will get a cover letter created based on different key words filtered 
 
 ## Automated tests 
 
-From within the virtual environment, run the Python script from the command-line:
+From within the virtual environment, run the automated tests of "python test_letter.py" from the command-line by input:
 
-    python test.py
+    pytest
